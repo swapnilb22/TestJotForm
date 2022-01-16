@@ -23,7 +23,8 @@ public class JotForm_Test extends TestBase
 	JotFormPage jotFormPage;
 	ThankYouPage thankYouPage;
 
-//DataProver: This will get the data from the Excel Sheet
+	//DataProver: This will get the data from the Excel Sheet
+	
 	@DataProvider
 	public Object[][] getCustomerData() throws IOException
 	{
@@ -31,7 +32,8 @@ public class JotForm_Test extends TestBase
 		return data;
 	}
 
-//This test case verify the data enter from the Excel is correct or not
+	//This test case verify the data enter from the Excel is correct or not
+	
 	@Test(dataProvider="getCustomerData", enabled=true)
 	public void verifyDetails(Map<Object, Object> map) 
 	{
@@ -39,7 +41,8 @@ public class JotForm_Test extends TestBase
 		jotFormPage.fillDetailsAndValidate(map);
 	}
 	
-//This test case will collect all the error messages	
+	//This test case will validate the jotform workflow
+	
 	@Test(dataProvider="getCustomerData", enabled=true)
 	public void verifyJotForm(Map<Object, Object> map) 
 	{
@@ -51,6 +54,7 @@ public class JotForm_Test extends TestBase
 	}
 
 
+	//This test case will collect all the error messages	
 
 	@Test(enabled=true)
 	public void getErrorMessages()
@@ -77,5 +81,6 @@ public class JotForm_Test extends TestBase
 	@AfterMethod
 	public void afterMethod() 
 	{
+		driver.quit();
 	}
 }
